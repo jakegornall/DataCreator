@@ -1,4 +1,6 @@
-import random, string
+import random, string, os
+
+base_dir = os.path.dirname(__file__)
 
 DATA_BLANK = "{{ \"{dataTitle}\": [{dataContent}] }}"
 ITEM_BLANK = "{{ \"{itemName}\": {{ {itemContent} }} }}"
@@ -8,17 +10,13 @@ class DataCreator:
 
 	DATA = ""
 
-	def __init__(self, dataTitle="data", numItemsToGenerate=10, dataTypeArr=[["integer", "IntDataTitle", [0, 100]], ["string", "StringDataTitle", [1, 15]], ["boolean", "BoolDataTitle"]]):
+	def __init__(self, dataTitle="data", numItemsToGenerate=10, dataTypeArr=[["integer", "IntDataTitle", [0, 100]], ["string", "StringDataTitle", [10, 15]], ["boolean", "BoolDataTitle"]]):
 		print "Generating Data..."
 
 		items = ""
 		for x in range(numItemsToGenerate):
 			itemContent = ""
-			print "____Generating Item#" + str(x) + "..."
-
 			for index, i in enumerate(dataTypeArr):
-				print "________Generating Item#" + str(x) + " " + i[1] + " data..."
-
 				if (i[0] == "integer" or i[0] == "int" or i[0] == "Int" or i[0] == "Integer"):
 					data = random.randint(i[2][0], i[2][1])
 
@@ -32,7 +30,7 @@ class DataCreator:
 					data = random.uniform(i[2][0], i[2][1])
 
 				else:
-					raise ValueError('Invalid Type...')
+					raise ValueError('Invalid Type: ' + '"' + i[0] + '"')
 
 				itemContent += ITEM_CONTENT.format(contentName=i[1], data=str(data))
 				if index < len(dataTypeArr) - 1:
@@ -42,11 +40,12 @@ class DataCreator:
 				items += ", "
 
 		self.DATA = DATA_BLANK.format(dataTitle=dataTitle, dataContent=items)
-		print self.DATA
+		print "Data Creation Complete..."
 
 
 	def export(self, filename):
 		print "Exporting " + filename + ".json"
 		with open(filename + ".json", "w") as f:
 			f.write(self.DATA)
+		print "File Saved At: " + base_dir + "\\" + filename + ".json"
 		
