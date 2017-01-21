@@ -1,5 +1,5 @@
 # DataCreator
-*DataCreator is a python tool for quickly generating random data for testing your applications.*
+### *DataCreator is a python tool for quickly generating random data for testing your applications.*
 
 
 ## Installation
