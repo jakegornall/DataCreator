@@ -8,6 +8,8 @@ $ git clone https://github.com/jakegornall/DataCreator
 ```
 *NOTE:  If using DataCreator within your application, make sure you copy "DataCreator.py" into your application's root directory.*
 
+
+
 ## Usage
 **First, import the DataCreator class.**
 ```Python
@@ -40,6 +42,7 @@ To export your your data to a json file, call the **.export("NameOfYourFileHere"
 ```Python
 newDataObject.export("MyNewData")
 ```
+
 
 ## License
 MIT License
