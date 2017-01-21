@@ -6,7 +6,7 @@
 ```shell
 $ git clone https://github.com/jakegornall/DataCreator
 ```
-NOTE:  If using DataCreator within your application, make sure you copy "DataCreator.py" into your application's root directory.
+*NOTE:  If using DataCreator within your application, make sure you copy "DataCreator.py" into your application's root directory.*
 
 ## Usage
 **First, import the DataCreator class.**
