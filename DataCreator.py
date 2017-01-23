@@ -74,6 +74,12 @@ class DataCreator:
 		else:
 			raise ValueError('No data to return...')
 
+
+	def getRawDataString(self):
+		'''Returns DATA as string.'''
+		return self.DATA
+
+
 	def export(self, filename):
 		'''Exports DATA to a json file.'''
 		print "Exporting " + filename + ".json"
