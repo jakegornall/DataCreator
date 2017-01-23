@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 
-import random, string, os
+import random, string, os, json
 
 base_dir = os.path.dirname(__file__)
 
@@ -34,6 +34,7 @@ class DataCreator:
 	DATA = ""
 
 	def __init__(self, dataTitle="data", numItemsToGenerate=10, dataTypeArr=[["integer", "IntDataTitle", [0, 100]], ["string", "StringDataTitle", [10, 15]], ["boolean", "BoolDataTitle"]]):
+		'''Generates new data set when a new DataCreator object is created.'''
 		print "Generating Data..."
 
 		items = ""
@@ -66,7 +67,15 @@ class DataCreator:
 		print "Data Creation Complete..."
 
 
+	def getData(self):
+		'''Returns json data as dictionary.'''
+		if self.DATA != "":
+			return json.loads(self.DATA)
+		else:
+			raise ValueError('No data to return...')
+
 	def export(self, filename):
+		'''Exports DATA to a json file.'''
 		print "Exporting " + filename + ".json"
 		with open(filename + ".json", "w") as f:
 			f.write(self.DATA)

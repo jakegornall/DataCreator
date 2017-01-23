@@ -47,7 +47,7 @@ Temporary Items
 .apdisk
 
 # binaries
-.pyc
+*.pyc
 
 # test run code
 makeData.py
