@@ -2,22 +2,22 @@
 #
 # Copyright (c) 2017 Jacob A. Gornall
 #
-# Permission is hereby granted, free of charge, to any person obtaining a copy 
-# of this software and associated documentation files (the "Software"), to deal 
-# in the Software without restriction, including without limitation the rights 
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
-# copies of the Software, and to permit persons to whom the Software is 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all 
+# The above copyright notice and this permission notice shall be included in all
 # copies or substantial portions of the Software.
 #
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
 
@@ -41,18 +41,17 @@ class DataCreator:
 		for x in range(numItemsToGenerate):
 			itemContent = ""
 			for index, i in enumerate(dataTypeArr):
-				if (i[0] == "integer" or i[0] == "int" or i[0] == "Int" or i[0] == "Integer"):
+				if i[0].lower() in ["integer", "int"]:
 					data = random.randint(i[2][0], i[2][1])
 
-				elif (i[0] == "string" or i[0] == "str" or i[0] == "String" or i[0] == "Str"):
+				elif i[0].lower() in ["string", "str"]:
 					data = '"' + ''.join(random.choice(string.lowercase) for a in range(random.choice([i[2][0], i[2][1]]))) + '"'
 
-				elif (i[0] == "boolean" or i[0] == "bool" or i[0] == "Boolean" or i[0] == "Bool"):
+				elif i[0].lower() in ["boolean", "bool"]:
 					data = random.choice(["true", "false"])
 
-				elif (i[0] == "float" or i[0] == "Float"):
+				elif i[0].lower() == "float":
 					data = random.uniform(i[2][0], i[2][1])
-
 				else:
 					raise ValueError('Invalid Type: ' + '"' + i[0] + '"')
 
@@ -86,4 +85,3 @@ class DataCreator:
 		with open(filename + ".json", "w") as f:
 			f.write(self.DATA)
 		print "File Saved At: " + base_dir + "\\" + filename + ".json"
-		
