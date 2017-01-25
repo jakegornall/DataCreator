@@ -37,8 +37,12 @@ newDataObject = DataCreator(
 		["boolean", "BoolDataTitle"]
 	])
 ```
-To export your your data to a json file, call the **.export("NameOfYourFileHere")** on your data object. The file will be saved in the same directory as the DataCreatoy.py file.
+To export your your data to a json file, call the **.export("NameOfYourFileHere")** method on your data object. The file will be saved in the same directory as the DataCreatoy.py file.
 **Example:**
 ```Python
 newDataObject.export("MyNewData")
 ```
+
+Use the **.getData()** method on your data object to return your data as a python dictionary.
+
+The **.getDataString()** method returns your data as a json string.
